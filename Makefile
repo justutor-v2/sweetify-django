@@ -1,7 +1,8 @@
+PYTHON ?= python3.15
 .PHONY: install test
 
 install:
-	@poetry install
+	$(PYTHON) -m pip install -e .
 
 test:
-	@DJANGO_SETTINGS_MODULE=tests.test_settings pytest
+	$(PYTHON) -m django test tests --settings=tests.test_settings

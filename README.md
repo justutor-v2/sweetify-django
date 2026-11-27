@@ -1,20 +1,24 @@
 # Sweetify - SweetAlert for Django
 
-[![Build Status](https://img.shields.io/travis/Atrox/sweetify-django.svg?style=flat-square)](https://travis-ci.org/Atrox/sweetify-django)
-[![Latest Version](https://img.shields.io/pypi/v/sweetify.svg?style=flat-square)](https://pypi.python.org/pypi/sweetify)
-[![Coverage Status](https://img.shields.io/coveralls/Atrox/sweetify-django.svg?style=flat-square)](https://coveralls.io/r/Atrox/sweetify-django)
-
 **Sweetify** allows you to use [SweetAlert](http://t4t5.github.io/sweetalert/) or [SweetAlert2](https://github.com/limonte/sweetalert2) for your temporary messages.
 _See the examples below, to see how to use this library_
 
 ## Installation
 
-**Note: This package does not provide the client-side files of SweetAlert. You have to provide them yourself.**
-
-Install the latest version with `pip`:
+This fork targets Python 3.15, also supports Python 3.14, and requires Django 6.0 or later.
+This fork bundles SweetAlert2 11.26.26 and its MIT license as Django static files.
+Install the fork with pip, replacing REVISION with the desired Git commit:
 
 ```bash
-pip install --upgrade sweetify
+pip install "sweetify @ git+https://github.com/justutor-v2/sweetify-django.git@REVISION"
+```
+
+Load the stylesheet in the page head and the script before the Sweetify template tag:
+
+```django
+{% load static %}
+<link rel="stylesheet" href="{% static 'sweetify/sweetalert2/sweetalert2.min.css' %}">
+<script src="{% static 'sweetify/sweetalert2/sweetalert2.min.js' %}"></script>
 ```
 
 Then you have to add `sweetify` to your django apps:
@@ -169,7 +173,7 @@ If you use [CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) you can 
 
 ## Development
 
-Use the `Makefile`to execute common tasks:
+In an active Python 3.15 virtual environment, use the following commands. Set `PYTHON=python3.14` when testing with Python 3.14.
 
 - Install dependencies
 
@@ -187,7 +191,7 @@ $ make test
 
 Everyone is encouraged to help improve this project. Here are a few ways you can help:
 
-- [Report bugs](https://github.com/atrox/sweetify-django/issues)
-- Fix bugs and [submit pull requests](https://github.com/atrox/sweetify-django/pulls)
+- [Report bugs](https://github.com/justutor-v2/sweetify-django/issues)
+- Fix bugs and [submit pull requests](https://github.com/justutor-v2/sweetify-django/pulls)
 - Write, clarify, or fix documentation
 - Suggest or add new features
