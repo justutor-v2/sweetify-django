@@ -12,15 +12,9 @@ DEFAULT_OPTS = {
 }
 
 
-def _flash_config(request, opts):
-    request.session["sweetify"] = json.dumps(opts, cls=LazyEncoder)
-
-
-def _flash_multiple_configs(request, json_data):
-    request.session["sweetify"] = json_data
-
-
-def _treat_data(opts):
+def _serialize_options(options):
+    opts = DEFAULT_OPTS.copy()
+    opts.update(options)
     button = opts.pop("button", None)
     if button:
         opts["showConfirmButton"] = True
@@ -45,15 +39,11 @@ def _treat_data(opts):
             opts["button"] = opts["confirmButtonText"]
         else:
             opts["button"] = False
-    return opts
+    return json.dumps(opts, cls=LazyEncoder)
 
 
 def sweetalert(request, title, **kwargs):
-    opts = DEFAULT_OPTS.copy()
-    opts.update(kwargs)
-    opts["title"] = title
-    opts = _treat_data(opts)
-    _flash_config(request, opts)
+    request.session["sweetify"] = _serialize_options({**kwargs, "title": title})
 
 
 def toast(request, title, icon="success", **kwargs):
@@ -88,10 +78,4 @@ def warning(request, title, **kwargs):
 
 
 def multiple(request, *args):
-    optsls = []
-    for dictionary in args:
-        opts = DEFAULT_OPTS.copy()
-        opts.update(dictionary)
-        opts = _treat_data(opts)
-        optsls.append(json.dumps(opts, cls=LazyEncoder))
-    _flash_multiple_configs(request, optsls)
+    request.session["sweetify"] = [_serialize_options(options) for options in args]

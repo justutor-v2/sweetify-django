@@ -1,32 +1,30 @@
-[tool.poetry]
-name = 'sweetify'
-version = '2.3.1'
-description = 'SweetAlert integration for Django'
-authors = ['Atrox <hello@atrox.dev>']
-license = 'BSD-3-Clause'
-
-readme = 'README.md'
-
-homepage = 'https://github.com/justutor-v2/sweetify-django'
-repository = 'https://github.com/justutor-v2/sweetify-django'
-
-keywords = ['sweetalert', 'django', 'messages']
-
-
-[tool.poetry.dependencies]
-python = '^3.6.2'
-
-[tool.poetry.dev-dependencies]
-pytest = '^6.2'
-pytest-cov = '^3.0'
-django = "^3.2"
-black = "^21.11b1"
-
 [build-system]
-requires = ['poetry-core>=1.0.0']
-build-backend = 'poetry.core.masonry.api'
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
 
-[tool.black]
-line-length = 120
-target-version = ['py37']
-include = '\.pyi?$'
+[project]
+name = "sweetify"
+dynamic = ["version"]
+description = "SweetAlert integration for Django"
+readme = "README.md"
+license = "BSD-3-Clause"
+authors = [{name = "Atrox", email = "hello@atrox.dev"}]
+requires-python = ">=3.14"
+dependencies = ["Django>=6.0"]
+classifiers = [
+    "Framework :: Django",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
+]
+
+[project.urls]
+Repository = "https://github.com/justutor-v2/sweetify-django"
+
+[tool.setuptools.dynamic]
+version = {attr = "sweetify.__version__.__version__"}
+
+[tool.setuptools.packages.find]
+include = ["sweetify*"]
+
+[tool.setuptools.package-data]
+sweetify = ["static/sweetify/sweetalert2/*", "templates/sweetify/*.html"]

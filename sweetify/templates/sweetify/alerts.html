@@ -1,0 +1,16 @@
+{{ alerts|json_script }}
+<script{% if nonce %} nonce="{{ nonce }}"{% endif %}>
+{
+  const alerts = JSON.parse(document.currentScript.previousElementSibling.textContent);
+  {% if legacy %}
+  swal(alerts[0]);
+  {% else %}
+  (async () => {
+    for (const options of alerts) {
+      const result = await Swal.fire(options);
+      if (!result.isConfirmed) break;
+    }
+  })();
+  {% endif %}
+}
+</script>

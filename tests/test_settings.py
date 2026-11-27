@@ -1,30 +1,4 @@
-import os
-
-BASE_DIR = os.path.dirname(__file__)
-
-INSTALLED_APPS = (
-    'django.contrib.auth',
-    'django.contrib.sessions',
-    'django.contrib.contenttypes',
-    'django.contrib.admin',
-    'sweetify',
-)
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': ':memory:'
-    }
-}
-
-MIDDLEWARE_CLASSES = (
-    'django.middleware.common.CommonMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-)
-
-ROOT_URLCONF = 'crispy_forms.tests.urls'
-SECRET_KEY = 'secretkey'
-SITE_ROOT = os.path.dirname(os.path.abspath(__file__))
-
-# sweetify
-SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
+SECRET_KEY = "sweetify-tests"
+INSTALLED_APPS = ["sweetify"]
+DATABASES = {"default": {"ENGINE": "django.db.backends.sqlite3", "NAME": ":memory:"}}
+TEMPLATES = [{"BACKEND": "django.template.backends.django.DjangoTemplates", "APP_DIRS": True}]

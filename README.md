@@ -1,14 +1,11 @@
 # Sweetify - SweetAlert for Django
 
-[![Build Status](https://img.shields.io/travis/Atrox/sweetify-django.svg?style=flat-square)](https://travis-ci.org/Atrox/sweetify-django)
-[![Latest Version](https://img.shields.io/pypi/v/sweetify.svg?style=flat-square)](https://pypi.python.org/pypi/sweetify)
-[![Coverage Status](https://img.shields.io/coveralls/Atrox/sweetify-django.svg?style=flat-square)](https://coveralls.io/r/Atrox/sweetify-django)
-
 **Sweetify** allows you to use [SweetAlert](http://t4t5.github.io/sweetalert/) or [SweetAlert2](https://github.com/limonte/sweetalert2) for your temporary messages.
 _See the examples below, to see how to use this library_
 
 ## Installation
 
+This fork targets Python 3.15, also supports Python 3.14, and requires Django 6.0 or later.
 This fork bundles SweetAlert2 11.26.26 and its MIT license as Django static files.
 Install the fork with pip, replacing REVISION with the desired Git commit:
 
@@ -176,7 +173,7 @@ If you use [CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) you can 
 
 ## Development
 
-Use the `Makefile`to execute common tasks:
+In an active Python 3.15 virtual environment, use the following commands. Set `PYTHON=python3.14` when testing with Python 3.14.
 
 - Install dependencies
 
@@ -194,7 +191,7 @@ $ make test
 
 Everyone is encouraged to help improve this project. Here are a few ways you can help:
 
-- [Report bugs](https://github.com/atrox/sweetify-django/issues)
-- Fix bugs and [submit pull requests](https://github.com/atrox/sweetify-django/pulls)
+- [Report bugs](https://github.com/justutor-v2/sweetify-django/issues)
+- Fix bugs and [submit pull requests](https://github.com/justutor-v2/sweetify-django/pulls)
 - Write, clarify, or fix documentation
 - Suggest or add new features
