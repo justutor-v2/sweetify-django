@@ -9,12 +9,19 @@ _See the examples below, to see how to use this library_
 
 ## Installation
 
-**Note: This package does not provide the client-side files of SweetAlert. You have to provide them yourself.**
-
-Install the latest version with `pip`:
+This fork bundles SweetAlert2 11.26.26 and its MIT license as Django static files.
+Install the fork with pip, replacing REVISION with the desired Git commit:
 
 ```bash
-pip install --upgrade sweetify
+pip install "sweetify @ git+https://github.com/justutor-v2/sweetify-django.git@REVISION"
+```
+
+Load the stylesheet in the page head and the script before the Sweetify template tag:
+
+```django
+{% load static %}
+<link rel="stylesheet" href="{% static 'sweetify/sweetalert2/sweetalert2.min.css' %}">
+<script src="{% static 'sweetify/sweetalert2/sweetalert2.min.js' %}"></script>
 ```
 
 Then you have to add `sweetify` to your django apps:
